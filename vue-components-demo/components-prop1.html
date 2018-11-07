@@ -1,0 +1,45 @@
+<!--
+Created with KBein
+User: kbein520@163.com
+Date: 2018/11/7
+Time: 14:38
+Dec:自定义Vue组件，props 作为对象传输
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VUE组件</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <blog-post
+        v-for="post in posts"
+        v-bind:post="post"></blog-post>
+
+    </div>
+
+    <script>
+        Vue.component("blog-post",{
+            props:["post"],
+            template:'<div><h3>{{post.title}}</h3><br><div v-html="post.content"></div></div>'
+        });
+
+        new Vue({
+            el:"#app",
+            data:{
+                posts:[
+                    {title:"标题一", content:"<html><body><h4>内容1</h4></body></html>"},
+                    {title:"标题二", content:"<html><body><h4>内容2</h4></body></html>"},
+                    {title:"标题三", content:"<html><body><h4>内容3</h4></body></html>"}
+                ]
+            }
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义组件</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="pMsg">
+        <br>
+
+        <child v-bind:message="pMsg"></child>
+    </div>
+
+    <script>
+
+        Vue.component("child",{
+
+            props:["message"],
+            template:'<div>{{message}}</div>'
+        });
+
+
+        new Vue({
+            el:"#app",
+            data:{
+                pMsg:"一点也不开心"
+            }
+
+        })
+
+    </script>
+
+
+</body>
+</html>
